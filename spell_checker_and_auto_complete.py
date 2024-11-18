@@ -6,9 +6,8 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import numpy as np
 
 # Download NLTK data
-nltk.data.path.append('./nltk_data')
-nltk.download('punkt', download_dir='./nltk_data')
-
+nltk.download('punkt')
+nltk.download('punkt_tab')
 # Function to preprocess the text
 def preprocess_text(text):
     text = re.sub(r'[^a-zA-Z0-9\s\-\']', '', text)
