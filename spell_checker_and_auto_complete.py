@@ -105,32 +105,6 @@ def viterbi(observed_sequence, states, transition_probs, emission_probs, start_p
         best_path.append(states[last_state])
     best_path.reverse()
     return best_path
-
-# # Streamlit app
-# st.title("Spell Checker and Auto-Complete System")
-# uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
-
-# if uploaded_file:
-#     text = uploaded_file.read().decode("utf-8")
-#     st.text_area("Uploaded Text", text, height=200)
-#     cleaned_text = preprocess_text(text)
-#     sentences = sent_tokenize(cleaned_text)
-#     tokenized_sentences = [word_tokenize(sentence) for sentence in sentences]
-#     bigram_model = build_bigram_model(tokenized_sentences)
-#     emission_probs = build_emission_probabilities(tokenized_sentences)
-    
-#     st.header("Auto-Complete")
-#     input_word = st.text_input("Enter a word for auto-complete:")
-#     if input_word:
-#         predictions = predict_next_word(input_word, bigram_model)
-#         st.write(f"Predictions: {predictions}")
-
-#     st.header("Spell Checker")
-#     misspelled_word = st.text_input("Enter a misspelled word for correction:")
-#     if misspelled_word:
-#         states = list(emission_probs.keys())
-#         corrected_sequence = viterbi([misspelled_word], states, bigram_model, emission_probs)
-#         st.write(f"Corrected Word: {corrected_sequence[0]}")
 # Streamlit app
 st.title("Spell Checker and Auto-Complete System")
 uploaded_file = st.file_uploader("Upload a text file", type=["txt"])
@@ -156,7 +130,7 @@ if uploaded_file:
             st.write("Enter a valid phrase.")
 
     st.header("Spell Checker")
-    misspelled_phrase = st.text_input("Enter a misspelled phrase for correction:")
+    misspelled_phrase = st.text_input("Enter a misspelled word for correction - please wait for 30 secs:")
     if misspelled_phrase:
         misspelled_tokens = word_tokenize(misspelled_phrase.lower())
         if misspelled_tokens:
