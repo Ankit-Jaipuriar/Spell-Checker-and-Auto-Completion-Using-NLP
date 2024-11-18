@@ -6,7 +6,8 @@ from nltk.tokenize import sent_tokenize, word_tokenize
 import numpy as np
 
 # Download NLTK data
-nltk.download('punkt')
+nltk.data.path.append('./nltk_data')
+nltk.download('punkt', download_dir='./nltk_data')
 
 # Function to preprocess the text
 def preprocess_text(text):
